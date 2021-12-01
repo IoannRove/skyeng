@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from backend.model import utils
+from model import utils
 
 
 class BaseData:

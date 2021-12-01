@@ -2,7 +2,7 @@ from typing import List
 
 from flask import Blueprint, render_template
 
-from backend import model
+import model
 
 users = Blueprint('users', __name__, url_prefix='/users')
 

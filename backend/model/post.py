@@ -1,6 +1,6 @@
 from typing import List
 
-from backend.model.base import BaseData
+from .base import BaseData
 from .comment import comment
 
 

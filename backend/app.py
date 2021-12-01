@@ -1,7 +1,8 @@
 from flask import Flask
 
-from backend.model import comment
+from model import comment
 from view import main, posts, search, users
+
 
 app = Flask(__name__)
 
@@ -18,4 +19,4 @@ def utility_processor():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

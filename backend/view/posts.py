@@ -2,7 +2,7 @@ from typing import List
 
 from flask import Blueprint, render_template
 
-from backend import model
+import model
 
 posts = Blueprint('post', __name__, url_prefix='/posts')
 

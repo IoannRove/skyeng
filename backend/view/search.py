@@ -2,7 +2,7 @@ from typing import List
 
 from flask import Blueprint, render_template, request
 
-from backend import model
+import model
 
 search = Blueprint('search', __name__, url_prefix='/search')
 
