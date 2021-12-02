@@ -13,7 +13,8 @@ class Post(BaseData):
         return [{**post, 'comments': comment.get_by_post_id(post['pk'])} for post in posts]
 
     def get_by_username(self, username: str) -> List[dict]:
-        return [post for post in self.get_all_with_comments() if post['poster_name'] == username]
+        posts: List[dict] = [post for post in self.get_all_with_comments() if post['poster_name'] == username]
+        return sorted(posts, key=lambda post: post['pk'])
 
     def search(self, query: str) -> List[dict]:
         posts: List[dict] = self.get_all_with_comments()

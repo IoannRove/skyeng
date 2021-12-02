@@ -12,9 +12,9 @@ class BaseData:
         return data
 
     def get_by_id(self, id: int) -> Optional[dict]:
-        for post in self.get_all():
-            if post['pk'] == id:
-                return post
+        for data in self.get_all():
+            if data['pk'] == id:
+                return data
         return None
 
     def _get_data(self) -> List[dict]:
