@@ -1,19 +1,23 @@
-from typing import List, Optional
+from typing import List, Optional, TypeVar, NamedTuple, Type
 
 from model import utils
 
 
-class BaseData:
-    def __init__(self, data_file_name: str) -> None:
-        self.data_file_name = data_file_name
+SchemaType = TypeVar("SchemaType", bound=NamedTuple)
 
-    def get_all(self) -> List[dict]:
-        data: List[dict] = self._get_data()
+
+class BaseData:
+    def __init__(self, data_file_name: str, schema: Type[SchemaType]) -> None:
+        self.data_file_name = data_file_name
+        self.schema = schema
+
+    def get_all(self) -> List[SchemaType]:
+        data: List[SchemaType] = [self.schema(**data) for data in self._get_data()]
         return data
 
-    def get_by_id(self, id: int) -> Optional[dict]:
+    def get_by_id(self, id: int) -> Optional[SchemaType]:
         for data in self.get_all():
-            if data['pk'] == id:
+            if data.pk == id:
                 return data
         return None
 

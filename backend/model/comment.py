@@ -1,15 +1,13 @@
 from typing import List
 
+import schemas
 from model.base import BaseData
 
 
 class Comment(BaseData):
-    def __init__(self, file_name: str) -> None:
-        super().__init__(file_name)
-
-    def get_by_post_id(self, post_id: int) -> List[dict]:
-        comments = self.get_all()
-        return [comment for comment in comments if comment['post_id'] == post_id]
+    def get_by_post_id(self, post_id: int) -> List[schemas.Comment]:
+        comments: List[schemas.Comment] = self.get_all()
+        return [comment for comment in comments if comment.post_id == post_id]
 
     @staticmethod
     def format_comment_word_ending(comment_count: int) -> str:
@@ -26,4 +24,4 @@ class Comment(BaseData):
             return ending[0]
 
 
-comment = Comment('comments.json')
+comment = Comment('comments.json', schemas.Comment)

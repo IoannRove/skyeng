@@ -13,10 +13,3 @@ def test_format_comment_word_ending():
     assert comment.format_comment_word_ending(21) == 'й'
     assert comment.format_comment_word_ending(22) == 'я'
     assert comment.format_comment_word_ending(25) == 'ев'
-
-
-class A:
-    def _a(self):
-        print('_a')
-    def __a(self):
-        print('__a')
